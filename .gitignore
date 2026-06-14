@@ -8,11 +8,11 @@ dist/
 __pycache__/
 *.pyc
 
-# 完成品（已打包的 exe、备份等）
-完成品/
+# 完成品 - 仅跟踪 zip 发布包
+完成品/*
+!完成品/*.zip
 
 # 临时文件
-*.zip
 *.7z
 *.log
 fix_indent.py
