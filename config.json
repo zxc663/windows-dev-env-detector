@@ -1,0 +1,385 @@
+{
+    "version": "1.0",
+    "groups": [
+        {
+            "name": "基础通用工具",
+            "items": [
+                {
+                    "name": "Python",
+                    "check_methods": [
+                        ["cmd", "python --version", "Python ([\\d.]+)"],
+                        ["env", "PYTHON_HOME", null],
+                        ["registry", "SOFTWARE\\Python\\PythonCore", null]
+                    ]
+                },
+                {
+                    "name": "Git",
+                    "check_methods": [
+                        ["cmd", "git --version", "git version ([\\d.]+)"],
+                        ["env", "GIT_HOME", null],
+                        ["registry", "SOFTWARE\\GitForWindows", null]
+                    ]
+                },
+                {
+                    "name": "VS Code",
+                    "check_methods": [
+                        ["cmd", "code --version", "([\\d.]+)"],
+                        ["env", "VSCODE_HOME", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{FD0FA333-5239-4D98-93F2-A51DCF95D2DA*}", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Visual Studio Code", null]
+                    ]
+                },
+                {
+                    "name": "Curl",
+                    "check_methods": [
+                        ["cmd", "curl --version", "curl ([\\d.]+)"],
+                        ["env", "CURL_HOME", null]
+                    ]
+                },
+                {
+                    "name": "Wget",
+                    "check_methods": [
+                        ["cmd", "wget --version", "Wget ([\\d.]+)"],
+                        ["env", "WGET_HOME", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "主流编程语言 & 编译环境",
+            "items": [
+                {
+                    "name": "Java (JDK)",
+                    "check_methods": [
+                        ["cmd", "java -version 2>&1", "version \"([\\d._]+)\""],
+                        ["env", "JAVA_HOME", null],
+                        ["registry", "SOFTWARE\\JavaSoft\\Java Development Kit", null]
+                    ]
+                },
+                {
+                    "name": "Node.js",
+                    "check_methods": [
+                        ["cmd", "node --version", "v([\\d.]+)"],
+                        ["env", "NODE_HOME", null],
+                        ["registry", "SOFTWARE\\nodejs", null]
+                    ]
+                },
+                {
+                    "name": "Go",
+                    "check_methods": [
+                        ["cmd", "go version", "go([\\d.]+)"],
+                        ["env", "GOROOT", null],
+                        ["registry", "SOFTWARE\\Go", null]
+                    ]
+                },
+                {
+                    "name": "PHP",
+                    "check_methods": [
+                        ["cmd", "php --version", "PHP ([\\d.]+)"],
+                        ["env", "PHPRC", null],
+                        ["registry", "SOFTWARE\\PHP", null]
+                    ]
+                },
+                {
+                    "name": "Ruby",
+                    "check_methods": [
+                        ["cmd", "ruby --version", "ruby ([\\d.]+)"],
+                        ["env", "RUBY_HOME", null],
+                        ["registry", "SOFTWARE\\Ruby", null]
+                    ]
+                },
+                {
+                    "name": "Rust",
+                    "check_methods": [
+                        ["cmd", "rustc --version", "rustc ([\\d.]+)"],
+                        ["env", "RUSTUP_HOME", null],
+                        ["registry", "SOFTWARE\\Rust", null]
+                    ]
+                },
+                {
+                    "name": "GCC/G++",
+                    "check_methods": [
+                        ["cmd", "gcc --version", "gcc.* ([\\d.]+)"],
+                        ["env", "MINGW_ROOT", null],
+                        ["registry", "SOFTWARE\\MinGW", null]
+                    ]
+                },
+                {
+                    "name": ".NET 运行时 & SDK",
+                    "check_methods": [
+                        ["cmd", "dotnet --version", "([\\d.]+)"],
+                        ["env", "DOTNET_ROOT", null],
+                        ["registry", "SOFTWARE\\dotnet\\Setup\\InstalledVersions", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "包管理器 & 前端工具",
+            "items": [
+                {
+                    "name": "npm",
+                    "check_methods": [
+                        ["cmd", "npm --version", "([\\d.]+)"],
+                        ["env", "npm_config_prefix", null]
+                    ]
+                },
+                {
+                    "name": "yarn",
+                    "check_methods": [
+                        ["cmd", "yarn --version", "([\\d.]+)"],
+                        ["env", "YARN_HOME", null]
+                    ]
+                },
+                {
+                    "name": "pnpm",
+                    "check_methods": [
+                        ["cmd", "pnpm --version", "([\\d.]+)"],
+                        ["env", "PNPM_HOME", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "数据库 & 中间件",
+            "items": [
+                {
+                    "name": "MySQL/MariaDB",
+                    "check_methods": [
+                        ["cmd", "mysql --version", "Ver ([\\d.]+)"],
+                        ["env", "MYSQL_HOME", null],
+                        ["registry", "SOFTWARE\\MySQL AB", null],
+                        ["registry", "SOFTWARE\\MySQL", null]
+                    ]
+                },
+                {
+                    "name": "PostgreSQL",
+                    "check_methods": [
+                        ["cmd", "psql --version", "psql \\(PostgreSQL\\) ([\\d.]+)"],
+                        ["env", "PGHOME", null],
+                        ["registry", "SOFTWARE\\PostgreSQL", null]
+                    ]
+                },
+                {
+                    "name": "SQL Server",
+                    "check_methods": [
+                        ["cmd", "sqlcmd -? 2>&1 | findstr /i version", ""],
+                        ["env", "SQLSERVER_HOME", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Microsoft SQL Server", null]
+                    ]
+                },
+                {
+                    "name": "Redis",
+                    "check_methods": [
+                        ["cmd", "redis-cli --version", "redis-cli ([\\d.]+)"],
+                        ["env", "REDIS_HOME", null],
+                        ["registry", "SOFTWARE\\Redis", null]
+                    ]
+                },
+                {
+                    "name": "MongoDB",
+                    "check_methods": [
+                        ["cmd", "mongod --version", "db version ([\\d.]+)"],
+                        ["env", "MONGODB_HOME", null],
+                        ["registry", "SOFTWARE\\MongoDB", null]
+                    ]
+                },
+                {
+                    "name": "RabbitMQ",
+                    "check_methods": [
+                        ["cmd", "rabbitmqctl status 2>&1 | findstr RabbitMQ", ""],
+                        ["env", "RABBITMQ_HOME", null],
+                        ["registry", "SOFTWARE\\RabbitMQ", null]
+                    ]
+                },
+                {
+                    "name": "Nacos",
+                    "check_methods": [
+                        ["env", "NACOS_HOME", null],
+                        ["registry", "SOFTWARE\\Nacos", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "容器 & 虚拟化 & 云原生",
+            "items": [
+                {
+                    "name": "Docker",
+                    "check_methods": [
+                        ["cmd", "docker --version", "Docker version ([\\d.]+)"],
+                        ["env", "DOCKER_HOME", null],
+                        ["registry", "SOFTWARE\\Docker", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{*Docker*}", null]
+                    ]
+                },
+                {
+                    "name": "Docker Compose",
+                    "check_methods": [
+                        ["cmd", "docker-compose --version", "docker-compose ([\\d.]+)"],
+                        ["env", "COMPOSE_HOME", null]
+                    ]
+                },
+                {
+                    "name": "kubectl (K8s)",
+                    "check_methods": [
+                        ["cmd", "kubectl version --client 2>&1", "Client Version: v([\\d.]+)"],
+                        ["env", "KUBECTL_HOME", null]
+                    ]
+                },
+                {
+                    "name": "VMware Workstation",
+                    "check_methods": [
+                        ["cmd", "vmrun -v 2>&1", "([\\d.]+)"],
+                        ["registry", "SOFTWARE\\VMware, Inc.\\VMware Workstation", null]
+                    ]
+                },
+                {
+                    "name": "VirtualBox",
+                    "check_methods": [
+                        ["cmd", "vboxmanage --version", "([\\d.]+)"],
+                        ["env", "VBOX_MSI_INSTALL_PATH", null],
+                        ["registry", "SOFTWARE\\Oracle\\VirtualBox", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Web 服务 & 项目构建工具",
+            "items": [
+                {
+                    "name": "Nginx",
+                    "check_methods": [
+                        ["cmd", "nginx -v 2>&1", "nginx/([\\d.]+)"],
+                        ["env", "NGINX_HOME", null],
+                        ["registry", "SOFTWARE\\nginx", null]
+                    ]
+                },
+                {
+                    "name": "Apache",
+                    "check_methods": [
+                        ["cmd", "httpd -v 2>&1", "Apache/([\\d.]+)"],
+                        ["env", "APACHE_HOME", null],
+                        ["registry", "SOFTWARE\\Apache", null]
+                    ]
+                },
+                {
+                    "name": "Tomcat",
+                    "check_methods": [
+                        ["env", "CATALINA_HOME", null],
+                        ["registry", "SOFTWARE\\Apache\\Tomcat", null]
+                    ]
+                },
+                {
+                    "name": "Maven",
+                    "check_methods": [
+                        ["cmd", "mvn --version", "Apache Maven ([\\d.]+)"],
+                        ["env", "MAVEN_HOME", null],
+                        ["registry", "SOFTWARE\\Apache\\Maven", null]
+                    ]
+                },
+                {
+                    "name": "Gradle",
+                    "check_methods": [
+                        ["cmd", "gradle --version", "Gradle ([\\d.]+)"],
+                        ["env", "GRADLE_HOME", null],
+                        ["registry", "SOFTWARE\\Gradle", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "接口 & 运维调试工具",
+            "items": [
+                {
+                    "name": "Postman",
+                    "check_methods": [
+                        ["cmd", "dir /b \"%LOCALAPPDATA%\\Postman\" 2>&1", ""],
+                        ["env", "POSTMAN_HOME", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{*Postman*}", null]
+                    ]
+                },
+                {
+                    "name": "Apifox",
+                    "check_methods": [
+                        ["cmd", "dir /b \"%LOCALAPPDATA%\\Apifox\" 2>&1", ""],
+                        ["env", "APIFOX_HOME", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{*Apifox*}", null]
+                    ]
+                },
+                {
+                    "name": "Xshell/FinalShell",
+                    "check_methods": [
+                        ["cmd", "dir /b \"%LOCALAPPDATA%\\Xshell\" 2>&1", ""],
+                        ["env", "XSHELL_HOME", null],
+                        ["registry", "SOFTWARE\\NetSarang\\Xshell", null]
+                    ]
+                },
+                {
+                    "name": "Telnet",
+                    "check_methods": [
+                        ["cmd", "where telnet 2>NUL", ""],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\OptionalComponents", null]
+                    ]
+                },
+                {
+                    "name": "SSH",
+                    "check_methods": [
+                        ["cmd", "ssh -v 2>&1", "OpenSSH_([\\d.]+)"],
+                        ["env", "SSH_HOME", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Windows 专属运行库 & 系统工具",
+            "items": [
+                {
+                    "name": "VC++ 运行库",
+                    "check_methods": [
+                        ["registry", "SOFTWARE\\Microsoft\\VisualStudio\\*\\VC Components", null],
+                        ["registry", "SOFTWARE\\Wow6432Node\\Microsoft\\VisualStudio\\*\\VC Components", null]
+                    ]
+                },
+                {
+                    "name": "DirectX",
+                    "check_methods": [
+                        ["registry", "SOFTWARE\\Microsoft\\DirectX", null],
+                        ["cmd", "where dxdiag 2>NUL", ""]
+                    ]
+                },
+                {
+                    "name": "Windows Terminal",
+                    "check_methods": [
+                        ["cmd", "where wt 2>NUL", ""],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{*WindowsTerminal*}", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Windows Terminal", null],
+                        ["env", "WT_PROFILE_ID", null]
+                    ]
+                },
+                {
+                    "name": "Cmder",
+                    "check_methods": [
+                        ["env", "CMDER_ROOT", null],
+                        ["registry", "SOFTWARE\\Cmder", null]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "文档辅助工具",
+            "items": [
+                {
+                    "name": "Typora",
+                    "check_methods": [
+                        ["cmd", "where typora 2>NUL", ""],
+                        ["cmd", "dir /b \"%LOCALAPPDATA%\\Typora\" 2>&1", ""],
+                        ["env", "TYPORA_HOME", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{*Typora*}", null],
+                        ["registry", "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Typora", null]
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+# 打包产物
+build/
+dist/
+*.spec
+*.exe
+
+# 缓存
+__pycache__/
+*.pyc
+
+# 完成品（已打包的 exe、备份等）
+完成品/
+
+# 临时文件
+*.zip
+*.7z
+*.log
+fix_indent.py
+
+# 系统
+.DS_Store
+Thumbs.db
