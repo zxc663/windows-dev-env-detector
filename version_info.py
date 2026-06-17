@@ -18,11 +18,11 @@ VSVersionInfo(
           [
             StringStruct(u'CompanyName', u'DevTools'),
             StringStruct(u'FileDescription', u'开发环境检测工具'),
-            StringStruct(u'FileVersion', u'1.0.0'),
+            StringStruct(u'FileVersion', u'1.9.2'),
             StringStruct(u'InternalName', u'dev_env_detector'),
             StringStruct(u'OriginalFilename', u'开发环境检测.exe'),
             StringStruct(u'ProductName', u'开发环境检测'),
-            StringStruct(u'ProductVersion', u'1.0.0')
+            StringStruct(u'ProductVersion', u'1.9.2')
           ]
         )
       ]

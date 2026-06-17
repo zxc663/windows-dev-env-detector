@@ -29,9 +29,13 @@ from typing import List, Tuple, Dict, Any
 from dataclasses import dataclass, field
 from enum import Enum
 
-APP_VERSION = "v1.9.1"
+APP_VERSION = "v1.9.2"
 
 CHANGE_LOG = """更新日志
+
+v1.9.2 (2026-06-17)
+- 修复注册表通配符匹配逻辑：GUID注册表项现在正确检查DisplayName字段，而非GUID本身（修复Typora、VS Code等通过GUID注册表检测的软件无法识别的问题）
+- 修复命令行检测逻辑：移除冗余的`if version or True`判断，严格模式下版本验证恢复正常
 
 v1.9.1 (2026-06-12)
 - 修复筛选/搜索后列表内容无法正常显示的问题（canvas scrollregion 未刷新）
@@ -190,7 +194,7 @@ class Detector:
                     if mode == DetectionMode.STRICT:
                         if not has_version and pattern:
                             continue
-                    if version or True:
+                    if version or (mode != DetectionMode.STRICT):
                         all_found.append((version or "-", exe_path, f"命令行({cmd_name})"))
                         method_found = True
 
@@ -341,14 +345,21 @@ class Detector:
                             try:
                                 name = winreg.EnumKey(parent_key, i)
                                 is_guid = name.startswith("{")
-                                contains_name = software_name.lower() in name.lower()
-                                if is_guid and contains_name:
+                                if is_guid:
                                     full_path = f"{base_path}\\{name}"
                                     try:
                                         sub_key = winreg.OpenKey(hive, full_path, 0, winreg.KEY_READ | winreg.KEY_WOW64_32KEY)
                                         try:
+                                            display_name = ""
                                             path_val = ""
                                             version_val = ""
+                                            try:
+                                                display_name, _ = winreg.QueryValueEx(sub_key, "DisplayName")
+                                            except Exception:
+                                                pass
+                                            contains_name = software_name.lower() in display_name.lower() if display_name else False
+                                            if not contains_name:
+                                                continue
                                             num_vals = winreg.QueryInfoKey(sub_key)[1]
                                             for j in range(num_vals):
                                                 try:
